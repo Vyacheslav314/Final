@@ -13,6 +13,8 @@ def add():
     array.append(note)
     file_operation.write_file(array, 'a')
     print('Заметка добавлена...')
+  if valid == True:
+           print('Такой заметки нет, возможно, вы ввели неверный id') 
 
 
 def show(text):
