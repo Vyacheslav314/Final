@@ -3,27 +3,26 @@ import view
 
 
 def run():
-    command = ''
-    while command != '7':
-        view.menu()
+    command = ""
+    while True:
+        print("\nВведите номер команды:\n\n1 - вывод всех заметок из файла\n2 - добавление заметки"
+          "\n3 - редактирование заметки\n4 - удаление заметки\n5 - выборка заметок по дате"
+          "\n6 - выход\n\nВведите номер функции: ")
         command = input().strip()
-        if command == '1':
+        if command == "1":
             f.show('all')
-        if command == '2':
+        if command == "2":
             f.add()
-        if command == '3':
+        if command == "3":
             f.show('all')
-            f.id_edit_del_show('del')
-        if command == '4':
+            f.edit_note()
+        if command == "4":
             f.show('all')
-            f.id_edit_del_show('edit')
-        if command == '5':
+            f.delete_note()
+        if command == "5":
             f.show('date')
-        if command == '6':
-            f.show('id')
-            f.id_edit_del_show('show')
-        if command == '7':
-            view.goodbuy()
+        if command == "6":
+            view.the_end()
             break
         print("Нажмите Enter, что бы продолжить ")
         input()

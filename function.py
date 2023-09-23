@@ -1,12 +1,11 @@
 import file_operation
 import Note
 import view
-
-number = 4  
+ 
 
 
 def add():
-    note = view.create_note(number)
+    note = view.create_note()
     array = file_operation.read_file()
     for notes in array:
         if Note.Note.get_id(note) == Note.Note.get_id(notes):
@@ -36,24 +35,30 @@ def show(text):
         print('Нет ни одной заметки...')
 
 
-def id_edit_del_show(text):
+def edit_note():
     id = input('Введите id необходимой заметки: ')
     array = file_operation.read_file()
-    logic = True
+    valid = True
     for notes in array:
         if id == Note.Note.get_id(notes):
-            logic = False
-            if text == 'edit':
-                note = view.create_note(number)
-                Note.Note.set_title(notes, note.get_title())
-                Note.Note.set_body(notes, note.get_body())
-                Note.Note.set_date(notes)
-                print('Заметка изменена...')
-            if text == 'del':
-                array.remove(notes)
-                print('Заметка удалена...')
-            if text == 'show':
-                print(Note.Note.map_note(notes))
-    if logic == True:
+            valid = False
+            note = view.create_note()
+            Note.Note.set_title(notes, note.get_title())
+            Note.Note.set_body(notes, note.get_body())
+            Note.Note.set_date(notes)
+            print('Заметка изменена...')
+                
+                
+def delete_note():
+    id = input('Введите id необходимой заметки: ')
+    array = file_operation.read_file()
+    valid = True
+    for notes in array:
+        if id == Note.Note.get_id(notes):
+            valid = False
+            array.remove(notes)
+            print('Заметка удалена...')
+    if valid == True:
         print('Такой заметки нет, возможно, вы ввели неверный id')
     file_operation.write_file(array, 'a')
+    
