@@ -27,10 +27,6 @@ def show(text):
         if text == 'id':
             logic = False
             print('ID: ' + Note.Note.get_id(notes))
-        if text == 'date':
-            logic = False
-            if date in Note.Note.get_date(notes):
-                print(Note.Note.map_note(notes))
     if logic == True:
         print('Нет ни одной заметки...')
 
